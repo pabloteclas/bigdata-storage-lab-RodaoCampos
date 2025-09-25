@@ -81,3 +81,52 @@ La secuencia de trabajo será:
 ---
 
 📌 **Entrega final:** subir el repo en GitHub público (`bigdata-storage-lab-<apellido>`) e incluir el link a la app de Streamlit desplegada.
+
+## 🚀 Pega y corre — Guía rápida de entrega
+
+### Pasos mínimos (en orden)
+
+1. **Crear repositorio con estructura**  
+   - Nombre: `bigdata-storage-lab-<apellido>`.  
+   - Crear carpetas (`src`, `data/raw`, `data/bronze`, `data/silver`, `data/gold`, `docs`, `tests`).  
+   - Tiempo estimado: **20 min**.  
+   - ✔️ Verificar: que todas las carpetas aparecen en GitHub con `.gitkeep`.
+
+2. **Pegar archivos base**  
+   - Subir `ingest.py`, `validate.py`, `transform.py`, `streamlit_app.py`, `requirements.txt`.  
+   - Tiempo estimado: **30 min**.  
+   - ✔️ Verificar: el repo abre bien los archivos y no hay errores de sintaxis al ejecutar `streamlit run streamlit_app.py` en local.
+
+3. **Subir CSVs de prueba a `/data/raw/`**  
+   - Usar datasets sintéticos (ej. ventas, IoT, fraude).  
+   - Tiempo estimado: **15 min**.  
+   - ✔️ Verificar: que la app procesa al menos 2–3 archivos distintos y genera Bronze + Silver.
+
+4. **Desplegar en Streamlit Community Cloud**  
+   - Conectar el repo, elegir `streamlit_app.py` como archivo principal.  
+   - Tiempo estimado: **30 min**.  
+   - ✔️ Verificar: la URL abre y se pueden subir CSVs desde el navegador.
+
+5. **Completar README con reflexiones**  
+   - Añadir sección “📝 Prompts de reflexión” y responder los 5 puntos.  
+   - Tiempo estimado: **20 min**.  
+   - ✔️ Verificar: README tiene arquitectura, justificación (5V), checklist, capturas en `docs/`.
+
+6. **Entregar URLs**  
+   - **Repo público en GitHub.**  
+   - **URL de la app en Streamlit.**  
+   - Tiempo estimado: **5 min**.  
+   - ✔️ Verificar: ambos links son accesibles sin credenciales.
+
+---
+
+### ⏱️ Tiempo total estimado: **~2 h**
+
+### ✅ Checklist final antes de entregar
+- [ ] URL de Streamlit funcional.  
+- [ ] `bronze.csv` y `silver.csv` generados en `/data`.  
+- [ ] README con decisiones justificadas + reflexiones respondidas.  
+- [ ] Diccionario y gobernanza completos en `docs/`.  
+- [ ] Capturas de pantallas del dashboard incluidas.  
+- [ ] Tests/checklist.md marcado.  
+
