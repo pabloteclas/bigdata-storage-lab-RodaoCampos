@@ -193,3 +193,34 @@ La secuencia de trabajo será:
 - [ ] Capturas de pantallas del dashboard incluidas.  
 - [ ] Tests/checklist.md marcado.  
 
+
+### 📝 Prompts de reflexión — Ejemplo de respuestas completas
+
+1. **Pregunta:** V dominante hoy y V dominante si se duplica el tráfico (justifica en 3 líneas)  
+   **Respuesta:**  
+   Hoy la V dominante es **Velocidad**, porque necesitamos procesar los CSV y micro-batches rápidamente.  
+   Si el tráfico se duplica, la V dominante sería **Volumen**, ya que el número de registros aumentaría significativamente.  
+   Esto impacta en almacenamiento y procesamiento, requiriendo ajustes de pipeline.
+
+2. **Pregunta:** Trade-off elegido (ej.: más compresión vs CPU): por qué lo elegiste y cómo lo medirás  
+   **Respuesta:**  
+   Elegimos compresión moderada (**Parquet con snappy**) para equilibrar tamaño de almacenamiento y CPU.  
+   Esto reduce espacio sin afectar demasiado el tiempo de lectura.  
+   Mediremos impacto con benchmarks de ingestión y consultas en Silver.
+
+3. **Pregunta:** Por qué “inmutable + linaje” mejora veracidad y qué coste añade  
+   **Respuesta:**  
+   Mantener datos **inmutables** y registrar **linaje** asegura que siempre podemos rastrear cada registro hasta su origen, aumentando la confianza en los datos.  
+   El coste añadido es **mayor consumo de almacenamiento** y algo de overhead en metadatos.
+
+4. **Pregunta:** KPI principal y SLA del dashboard: qué decisión habilita y por qué esa latencia  
+   **Respuesta:**  
+   KPI principal: **volumen total de transacciones válidas por mes**.  
+   SLA: actualización en **<5 min** tras la subida de CSV.  
+   Esta latencia permite análisis casi en tiempo real sin sobrecargar el servidor.
+
+5. **Pregunta:** Riesgo principal del diseño y mitigación técnica concreta  
+   **Respuesta:**  
+   Riesgo: **errores de encoding o formatos inconsistentes** en CSV de origen.  
+   Mitigación: normalización automática con **fallback UTF-8 → Latin-1**, y validaciones en Bronze que registran fallos para poder corregirlos posteriormente.
+
