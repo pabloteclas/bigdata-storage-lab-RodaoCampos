@@ -82,6 +82,69 @@ La secuencia de trabajo será:
 
 📌 **Entrega final:** subir el repo en GitHub público (`bigdata-storage-lab-<apellido>`) e incluir el link a la app de Streamlit desplegada.
 
+## 🏆 Retos opcionales (dificultad creciente)
+
+### 🔹 Reto A: Validaciones extra
+- **Objetivo:** Asegurar calidad de datos mediante reglas adicionales.  
+- **Pasos sugeridos:**  
+  1. En `validate.py`, implementar control de rangos de fechas (ej. fecha ≥ 2015).  
+  2. Detectar duplicados según clave natural (ej. `id_cliente + fecha`).  
+  3. Rechazar filas no válidas y registrarlas en un log.  
+- **Criterio de aceptación:**  
+  - En el repo se ve la función extra en `validate.py`.  
+  - La app muestra conteo de registros rechazados.  
+
+---
+
+### 🔹 Reto B: Métrica de veracidad en la app
+- **Objetivo:** Calcular un % de registros válidos por archivo y mostrarlo en el dashboard.  
+- **Pasos sugeridos:**  
+  1. Modificar `validate.py` para devolver (válidos, inválidos).  
+  2. Calcular `veracidad = válidos / total * 100`.  
+  3. En `streamlit_app.py`, añadir un gráfico simple (ej. barras).  
+- **Criterio de aceptación:**  
+  - Al subir un CSV, la app muestra la métrica % por archivo.  
+  - Evidencia en README (captura).  
+
+---
+
+### 🔹 Reto C: Tabla Gold con linaje
+- **Objetivo:** Crear una tabla optimizada para reporting y mantener trazabilidad.  
+- **Pasos sugeridos:**  
+  1. Definir tabla **Gold**: ej. ventas mensuales por categoría (`fecha, categoria, ventas_total`).  
+  2. Documentar en README cómo se genera desde Silver.  
+  3. Añadir metadato de linaje (ej. en columna `origen_archivo`).  
+- **Criterio de aceptación:**  
+  - Archivo `gold.csv` generado en `/data/gold/`.  
+  - README explica reglas de derivación y linaje.  
+
+---
+
+### 🔹 Reto D: Ensayo CSV vs Parquet
+- **Objetivo:** Comparar formatos y concluir cuál es más eficiente en este caso.  
+- **Pasos sugeridos:**  
+  1. Generar dataset sintético de al menos 100k filas.  
+  2. Guardar como CSV y Parquet.  
+  3. Medir: tamaño en disco y tiempo de lectura con pandas.  
+  4. Escribir conclusiones en README.  
+- **Criterio de aceptación:**  
+  - Notebook o script con el experimento incluido en `src/`.  
+  - Resultados (tabla comparativa) documentados en README.  
+
+---
+
+### 🔹 Reto E: Simulación paso a streaming
+- **Objetivo:** Analizar cómo evolucionaría la arquitectura hacia streaming.  
+- **Pasos sugeridos:**  
+  1. Identificar qué capa cambia primero (ej. ingesta → micro-batches a colas).  
+  2. Diseñar esquema de flujo actualizado (diagrama simple en `docs/`).  
+  3. Redactar pseudocódigo de ingesta en tiempo real (ej. usando colas + validación online).  
+- **Criterio de aceptación:**  
+  - Diagrama en `docs/streaming_design.png` o `.md`.  
+  - Pseudocódigo documentado en README.  
+  - Justificación de la capa que se adapta primero.  
+
+
 ## 🚀 Pega y corre — Guía rápida de entrega
 
 ### Pasos mínimos (en orden)
